@@ -17,17 +17,17 @@ def get_public_holidays(public_holidays_url: str, year: str) -> DataFrame:
     Returns:
         DataFrame: A dataframe with the public holidays.
     """
-    #aqui debo implementar la funcion para el api
-    # TODO: Implement this function.
-    # You must use the requests library to get the public holidays for the given year.
-    # The url is public_holidays_url/{year}/BR.
-    # You must delete the columns "types" and "counties" from the dataframe.
-    # You must convert the "date" column to datetime.
-    # You must raise a SystemExit if the request fails. Research the raise_for_status
-    # method from the requests library.
-    raise NotImplementedError
-
-
+    response = requests.get(public_holidays_url + '/' + year + '/BR')
+    try:
+        response.raise_for_status()
+        dict = response.json()
+        df = DataFrame(dict)
+        df = df.drop(columns=['types', 'counties'])
+        df['date'] = to_datetime(df['date'])
+        return df
+    except requests.exceptions.HTTPError as err:
+        print(f"HTTP error occurred: {err}")
+        
 def extract(
     csv_folder: str, csv_table_mapping: Dict[str, str], public_holidays_url: str
 ) -> Dict[str, DataFrame]:
