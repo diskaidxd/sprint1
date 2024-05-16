@@ -4,3 +4,4 @@
 -- Year2016, with the revenue per month of 2016 (0.00 if it doesn't exist);
 -- Year2017, with the revenue per month of 2017 (0.00 if it doesn't exist) and
 -- Year2018, with the revenue per month of 2018 (0.00 if it doesn't exist).
+select * from olist_customers_dataset
