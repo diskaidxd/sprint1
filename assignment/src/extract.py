@@ -33,7 +33,7 @@ def get_public_holidays(public_holidays_url: str, year: str) -> DataFrame:
     if 'types' in df.columns:
         df.drop(columns=['types'], inplace=True)
     if 'counties' in df.columns:
-        df.drop(columns['counties'], inplace=True)
+        df.drop(columns=['counties'], inplace=True)
     if 'date' in df.columns:
         df['date'] = to_datetime(df['date'])
 
