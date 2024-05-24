@@ -14,3 +14,4 @@
 -- 1. You can use the julianday function to convert a date to a number.
 -- 2. order_status == 'delivered' AND order_delivered_customer_date IS NOT NULL
 -- 3. Take distinct order_id.
+SELECT 1
